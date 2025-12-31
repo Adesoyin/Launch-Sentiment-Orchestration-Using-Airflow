@@ -6,7 +6,7 @@ import pendulum
 
 with DAG(
     dag_id='create_wikipage_table',
-    start_date=pendulum.datetime(2025, 12, 29),
+    start_date=pendulum.datetime(2025, 12, 30),
     schedule=None,
     catchup=False
 ) as dag:
@@ -19,6 +19,7 @@ with DAG(
             domain VARCHAR(255),
             pagename VARCHAR(255) NOT NULL,
             viewcount INT NOT NULL,
+            pagedatetime TIMESTAMP NOT NULL,
             created_at TIMESTAMP NOT NULL,
             PRIMARY KEY (domain, pagename, viewcount)
         );

@@ -78,7 +78,7 @@ This ensures safe re-execution of the pipeline without duplicating data.
 
 **Retries:** Configured retries for transient failures on dag level.
 
-**Failure Alerts:** Email notifications on task failure
+**Failure Alerts:** Email notifications on task failure - **__In progress__**
 
 **Idempotency:** Enforced via composite primary key
 
@@ -90,12 +90,38 @@ This ensures safe re-execution of the pipeline without duplicating data.
 
 ## Sample Analysis Query
 
-To identify the company with the highest pageviews for the selected hour:
+The query below was run to identify the company with the highest pageviews for the interested hour:
 
     SELECT
-        page_title,
+        pagename,
         SUM(viewcount) AS total_views
     FROM wiki_pages
-    GROUP BY page_title
+    GROUP BY pagename
     ORDER BY total_views DESC
     LIMIT 1;
+
+    Google recorded the highest total page views among the six companies, with 1,939 views, accounting for approximately 41% of all page views during the selected time window (2025-12-20, 10:00).
+
+
+
+## Appendix
+
+**Download task**
+
+   ![alt text](appendix/downloadwikipage.png)
+
+**Extract task**
+
+   ![alt text](appendix/extract_gz_to_csv.png)
+
+**Filter task**
+
+![alt text](appendix/filter_companies.png)
+
+**Load Dataset to DB**
+    ![alt text](appendix/load_to_db.png)
+
+**Files location on container**
+
+![alt text](appendix/files_location_in_container.png)
+

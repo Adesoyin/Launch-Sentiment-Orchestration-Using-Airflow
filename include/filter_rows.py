@@ -15,7 +15,7 @@ def _filter_companies(csv_path: str) -> str:
         outputreading = csv.DictReader(infile)
         writer = csv.DictWriter(
             outfile,
-            fieldnames=["domain", "pagename", "viewcount", "response_size"]
+            fieldnames=["domain_code", "page_title", "views_count", "response_size"]
         )
         writer.writeheader()
 
